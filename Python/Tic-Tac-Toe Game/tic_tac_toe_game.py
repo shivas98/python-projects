@@ -16,7 +16,7 @@ def player_input():
     marker = ''
 
     while not (marker == 'X' or marker == 'O'):
-        marker = input('Player 1: Do you want to be X or O?').upper()
+        marker = input('Player 1: Do you want to be X or O?\n').upper()
 
     if marker == 'X':
         return ('X', 'O')
@@ -28,10 +28,9 @@ def space_check(game_board, position):
 
 def player_choice(game_board):
     position = 0
-    board_positions()
 
     while not space_check(game_board, position):
-        position = int(input('Please choose a position between (1-9) to place your marker. Reference of positions is provided above'))
+        position = int(input('Please choose a position between (1-9) to place your marker. Reference of positions is provided above\n'))
 
     return position
 
@@ -56,28 +55,32 @@ if __name__ == '__main__':
     # test = ['x','o','x','o','x','o','x','o','x','o']
     # print(game_board)
     while play_game not in ['Y','N']:
-        play_game = input('Are you ready to play the game? Y or N').upper()
+        play_game = input('Are you ready to play the game? Y or N\n').upper()
 
         if play_game == 'Y':
             game_on = True
         elif play_game == 'N':
             game_on = False
         else:
-            print('Please choose an appropriate option!')
+            print('Please choose an appropriate option!\n')
+
+    print('These are the board positions that needs to be filled. Please remeber the positions')
+    board_positions()
 
     player1_marker, player2_marker = player_input()
     
     
     while game_on:
         if count % 2 == 0:
-            print(f'It is {player1_marker} Turn')
+            print(f'It is {player1_marker} Turn\n')
             player_marker = player1_marker
         else:
-            print(f'It is {player2_marker} Turn')
+            print(f'It is {player2_marker} Turn\n')
             player_marker = player2_marker
         position = player_choice(game_board)
         place_marker(game_board, position, player_marker)
         display_board(game_board)
+        print(game_board)
         if win_check(game_board,player_marker):
             display_board(game_board)
             print(f'Congratulations! Player {player_marker}: You have won the game.')
