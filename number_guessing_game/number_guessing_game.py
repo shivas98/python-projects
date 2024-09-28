@@ -20,7 +20,7 @@ if __name__ == '__main__':
 
     while True:
         guesses = 1
-        target_number = 5
+        target_number = random.randint(1, 100)
         while guesses <= 5:
             print(f'Guess {guesses}')
             user_guess = guess_the_number()
