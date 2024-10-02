@@ -2,7 +2,7 @@ import random
 
 def guess_the_number():
         
-        user_input_number = int(input('Guess a number between 1 and 100.\n'))
+        user_input_number = int(input('Guess a number between 1 and 20.\n'))
 
         return user_input_number
 
@@ -20,7 +20,7 @@ if __name__ == '__main__':
 
     while True:
         guesses = 1
-        target_number = random.randint(1, 100)
+        target_number = random.randint(1, 20)
         while guesses <= 5:
             print(f'Guess {guesses}')
             user_guess = guess_the_number()
@@ -30,10 +30,11 @@ if __name__ == '__main__':
             else:
                 print('You have made the wrong guess. Please guess the number again.\n')
 
-            guesses += 1
-
             if guesses == 5:
-                print('You are out of guesses!\n')
+                print('You are out of guesses. Game Over!')
+                print(f'Nice try! The number was {target_number}')
+
+            guesses += 1
 
         if not game_replay():
             break
